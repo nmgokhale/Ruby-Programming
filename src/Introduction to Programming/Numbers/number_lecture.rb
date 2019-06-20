@@ -1,12 +1,12 @@
 # Number Lecture
 
-puts 1 + 1
-# puts -5 + 3
-# puts 2.5 + 0.5
-puts 10 - 8
-puts 5 * 5
-puts 5 / 2
-puts 9 / 2.0
+puts 1 + 1 # 2
+puts -5 + 3 # -2
+puts 2.5 + 0.5 # 3.0
+puts 10 - 8 # 2
+puts 5 * 5 # 25
+puts 5 / 2 # 2  - if you divide by whole numbers, ruby ignores decimal part
+puts 9.0 / 2 # 4.5 - to get accurate answer, use decimal numbers as your divisors or dividend
 
 # Ruby also follows BODMAS
 # Order of operations follow Parentheses, Multiplication-Division, Addition-Subtraction
