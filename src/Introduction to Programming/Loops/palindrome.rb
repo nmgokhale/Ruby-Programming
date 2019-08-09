@@ -1,14 +1,16 @@
 # Write a method is_palindrome(word) that takes in a string word and returns the true if the word is a palindrome,
 # false otherwise. A palindrome is a word that is spelled the same forwards and backwards.
 def is_palindrome(word)
-	reversed = ""
-  	i = 0
-  	while i < word.length
-      char = word[i]
-      reversed = char + reversed
-      i += 1
+  forward = 0
+  backword = word.length - 1
+  while forward <= backword
+    if word[forward] != word[backword]
+      return false
     end
-  	return word == reversed
+    forward += 1
+    backword -= 1
+  end
+  return true
 end
 
 puts is_palindrome("racecar")  # => true

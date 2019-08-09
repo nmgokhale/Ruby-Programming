@@ -1,4 +1,4 @@
-# << adds an element at the end of an array
+# << adds a single element at the end of an array, evaluates to the array
 # array.push() adds an element(s) at the end of array, evaluates to the array
 #  array.push can push multiple elements whereas shovel (<<) can be used to push only 1 element
 
@@ -160,7 +160,7 @@ print arr10.join("_") # Hello_world_how_are_you
 puts
 puts "--------------"
 
-# str.split & array.join combined
+# str.split & array.join combined to replace a character/word with another character/word
 str5 = "follow the yellow brick road"
 print str5.split("l") # ["fo", "", "ow the ye", "", "ow brick road"]
 puts

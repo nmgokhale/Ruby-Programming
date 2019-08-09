@@ -1,0 +1,56 @@
+Advanced Problems - 
+map_&_select.rb
+
+Array Methods & Enumerables - 
+array_methods.rb
+array_enumerables.rb
+nested_loops.rb
+two_dim_arrays.rb
+
+Arrays - 
+array_lecture.rb
+
+Booleans - 
+boolean_operations.rb
+
+Conditionals - 
+conditional.rb
+
+Hashes - 
+hashes.rb
+hash_enumerables.rb
+counter_hash.rb
+
+Loops - 
+loops.rb
+
+Methods - 
+methods.rb
+
+Numbers - 
+number_lecture.rb
+number_comparison.rb
+
+Strings - 
+string_iterations.rb
+string_operations.rb
+
+Variables - 
+variables.rb
+variables_exercise.rb
+
+
+Review Problems - 
+Array Methods & Enumerables -
+Abbreviate sentence
+Rotate Array
+
+Hashes - 
+Ae Count
+Element Replace
+
+Advanced Problems - 
+Last Index
+Most Vowels
+Prime - Negative numbers are not prime!
+

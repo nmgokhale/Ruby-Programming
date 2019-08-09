@@ -1,5 +1,6 @@
 # Arrays
-
+# puts iterates through the array and only displays elements
+# print - prints the array as it is
 letters = ["a", "b", "c"]
 puts letters # a b c
 print letters # ["a", "b", "c"]

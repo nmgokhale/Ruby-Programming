@@ -4,17 +4,17 @@
 # && (and)
 # || (or)
 
-puts true
-puts false
-puts !true
-puts !false
+puts true # true
+puts false # false
+puts !true # false
+puts !false # true
 
-puts false && false
-puts false && true
-puts true && false
-puts true && true
+puts false && false # false
+puts false && true # false
+puts true && false # false
+puts true && true # true
 
-puts false || false
-puts false || true
-puts true || false
-puts true || true
+puts false || false # false
+puts false || true # true
+puts true || false # true
+puts true || true # true

@@ -4,7 +4,7 @@ def reverse(word)
   reversedWord = ""
   while index >= 0
     char = word[index]
-    reversedWord = reversedWord + char
+    reversedWord << char
     index -= 1
   end
   return reversedWord

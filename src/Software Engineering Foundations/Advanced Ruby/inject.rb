@@ -15,7 +15,7 @@
 # 
 # The key to understanding inject is to remember that the accumulator will be reassigned 
 # to the result of the block on every iteration.
-# Find Maximum value - 
+# Find Minumum value - 
 result =  [11, 7, 2, 4].inject do |acc, el|
     if el < acc
         el
@@ -45,3 +45,8 @@ p arr.inject { |acc, el| acc * el } # => 42
 
 p arr.inject(100) { |acc, el| acc + el} # => 113
 
+
+
+p "----------------------------------------"
+arr = [2, 3, 1, 7]
+p arr.inject { |acc, el| acc + el}
