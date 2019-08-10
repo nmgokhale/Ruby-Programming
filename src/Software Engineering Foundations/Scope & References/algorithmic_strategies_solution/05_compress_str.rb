@@ -3,21 +3,26 @@
 # For example "aaabbc" is compressed to "3a2bc".
 
 def compress_str(str)
-    repeats = ""
-    answer = ""
-    (0...str.length).each do |i|
-        if str[i] == str[i+1]
-            repeats = repeats + str[i]
+    new_str = ""
+    
+    i = 0
+    while i < str.length
+        char = str[i]
+        count = 0
+
+        while char == str[i]
+            count += 1
+            i += 1
+        end
+
+        if count > 1
+            new_str += count.to_s + char    
         else
-            if repeats.length != 0
-                answer = answer + (repeats.length+1).to_s + repeats[0]
-                repeats = ""
-            else
-                answer = answer + str[i]
-            end
+            new_str += char
         end
     end
-    answer
+
+    new_str
 end
 
 p compress_str("aaabbc")        # => "3a2bc"

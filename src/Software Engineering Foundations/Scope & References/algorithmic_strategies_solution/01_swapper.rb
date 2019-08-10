@@ -7,7 +7,6 @@ def swapper(arr, idx_1, idx_2)
     arr
 end
 
-
 p swapper(["a", "b", "c", "d"], 0, 2)               # => ["c", "b", "a", "d"]
 p swapper(["a", "b", "c", "d"], 3, 1)               # => ["a", "d", "c", "b"]
 p swapper(["canal", "broadway", "madison"], 1, 0)   # => ["broadway", "canal", "madison"]

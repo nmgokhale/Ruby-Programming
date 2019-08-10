@@ -4,23 +4,23 @@
 # The first or last element of the array is considered a "peak" if it is greater than it's one neighbor.
 
 def peak_finder(arr)
-    peak = []
-    (0..arr.length-1).each do |idx|
-        if idx == 0
-            if arr[idx] > arr[idx+1]
-                peak.push(arr[idx])
-            end
-        elsif idx == arr.length-1
-            if arr[idx] > arr[idx-1]
-                peak.push(arr[idx])
-            end
-        else
-            if (arr[idx] > arr[idx-1]) && (arr[idx] > arr[idx+1])
-                peak.push(arr[idx])
-            end
+    peaks = []
+
+    arr.each_index do |i|
+        left = arr[i - 1]
+        mid = arr[i]
+        right = arr[i + 1]
+
+        if i == 0 && mid > right
+            peaks << mid
+        elsif i == arr.length - 1 && mid > left
+            peaks << mid
+        elsif mid > left && mid > right
+            peaks << mid
         end
     end
-    peak
+
+    peaks
 end
 
 p peak_finder([1, 3, 5, 4])         # => [5]
