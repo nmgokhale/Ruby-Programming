@@ -1,0 +1,4 @@
+gem install pry
+gem install pry-doc
+
+gem install byebug
