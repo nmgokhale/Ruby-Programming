@@ -21,7 +21,7 @@ class Code
     end
   end
 
-  def self.random(length)
+  def self.random(length) # Important
     new_array =Array.new(length)
     random = new_array.map { |el| el = POSSIBLE_PEGS.keys.sample }
     Code.new(random)
