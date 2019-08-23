@@ -6,9 +6,31 @@
 #
 # all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])   # => ["action europe", "tear impromptu"]
 def all_vowel_pairs(words)
+    vowels = "aeiou"
+    pairs = []
+    (0...words.length-1).each do |i|
+        ((i+1)...words.length).each do |j|
+            combined = words[i] + " "+ words[j]
+            vowels_present = []
+            combined.split("").each do |char|
+                if vowels.include?(char)
+                    if !vowels_present.include?(char)
+                        vowels_present << char
+                    end
+                end
+            end
 
+            if vowels.split("").sort == vowels_present.sort
+                pairs << combined
+            end
+        end
+    end
+    pairs
 end
 
+p all_vowel_pairs(["goat", "action", "tear", "impromptu", "tired", "europe"])
+p all_vowel_pairs(["upper", "goalie", "unstoppable", "cranky", "terrible"]) #(["upper goalie", "goalie unstoppable", "unstoppable terrible"])
+p all_vowel_pairs(["city", "stair", "dog"])#([])
 
 # Write a method, composite?, that takes in a number and returns a boolean indicating if the number
 # has factors besides 1 and itself
@@ -18,9 +40,24 @@ end
 # composite?(9)     # => true
 # composite?(13)    # => false
 def composite?(num)
-
+    return false if num == 0 || num == 1
+    if num < 0 
+        num = num.abs
+    end
+    (2...num).each do |factor|
+        if num % factor == 0
+            return true
+        end
+    end
+    false
 end
 
+p composite?(9)#(true)
+p composite?(12)#(true)
+p composite?(4)#(true)
+p composite?(7)#(false)
+p composite?(13)#(false)
+p composite?(31)#false)
 
 # A bigram is a string containing two letters.
 # Write a method, find_bigrams, that takes in a string and an array of bigrams.
@@ -32,8 +69,18 @@ end
 # find_bigrams("the theater is empty", ["cy", "em", "ty", "ea", "oo"])  # => ["em", "ty", "ea"]
 # find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])        # => ["ck", "oo"]
 def find_bigrams(str, bigrams)
-
+    found = []
+    bigrams.each do |single_bigram|
+        if str.include?(single_bigram)
+            found << single_bigram
+        end
+    end
+    found
 end
+
+p find_bigrams("the theater is empty", ["cy", "em", "ty", "ea", "oo"])#(["em", "ty", "ea"])
+p find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])#(["ck", "oo"])
+p find_bigrams("to the moon and back", ["ty", "no", "tr"])#([])
 
 class Hash
     # Write a method, Hash#my_select, that takes in an optional proc argument
@@ -49,10 +96,20 @@ class Hash
     # hash_2 = {4=>4, 10=>11, 12=>3, 5=>6, 7=>8}
     # hash_2.my_select { |k, v| k + 1 == v }      # => {10=>11, 5=>6, 7=>8})
     # hash_2.my_select                            # => {4=>4}
-    def my_select(&prc)
-
+    def my_select(&prc)  
+        if prc.nil?  # IMPORTANT - If no proc is passed to the method
+            prc = Proc.new { |k, v| k == v }
+        end
+        self.select { |k,v| prc.call(k,v) } 
     end
 end
+hash_1 = {x: 7, y: 1, z: 8}
+hash_2 = {4=>4, 10=>11, 12=>3, 5=>6, 7=>8}
+hash = {"cat"=>"dog", "purple"=>"purple", "sound"=>"music", "open"=>"open"}
+p hash_1.my_select { |k, v| v.odd? }#({x: 7, y: 1})
+p hash_1.my_select { |k, v| v > 5 }#({x: 7, z: 8})
+p hash_2.my_select { |k, v| k + 1 == v }#({10=>11, 5=>6, 7=>8})
+p hash.my_select#({"purple"=>"purple", "open"=>"open"})
 
 class String
     # Write a method, String#substrings, that takes in a optional length argument
@@ -64,9 +121,32 @@ class String
     # "cats".substrings     # => ["c", "ca", "cat", "cats", "a", "at", "ats", "t", "ts", "s"]
     # "cats".substrings(2)  # => ["ca", "at", "ts"]
     def substrings(length = nil)
-
+        if length.nil?
+            length = 0
+        end
+        i = 0
+        substr = []
+        if length == 0
+            while i <= self.length-1
+                j = i
+                while j < self.length
+                    substr << self[i..j]
+                    j += 1
+                end
+                i += 1
+            end
+        else
+            while i <= self.length-length
+                j = i + (length) 
+                substr << self[i...j]            
+                i += 1
+            end
+        end        
+        substr
     end
-
+p "cats".substrings     # => ["c", "ca", "cat", "cats", "a", "at", "ats", "t", "ts", "s"]
+p "cats".substrings(2)  # => ["ca", "at", "ts"]
+p "boots".substrings(3) # => ["boo", "oot", "ots"]
 
     # Write a method, String#caesar_cipher, that takes in an a number.
     # The method should return a new string where each char of the original string is shifted
@@ -78,6 +158,16 @@ class String
     # "bootcamp".caesar_cipher(2) #=> "dqqvecor"
     # "zebra".caesar_cipher(4)    #=> "difve"
     def caesar_cipher(num)
-
+        alphabets = "abcdefghijklmnopqrstuvwxyz"
+        curr_array = self.split("")
+        new_array = curr_array.map do |char|
+            curr_idx = alphabets.index(char)
+            new_idx = (curr_idx + num) % 26  # Important
+            alphabets[new_idx]
+        end
+        new_array.join("")
     end
 end
+p "apple".caesar_cipher(1)    #=> "bqqmf"
+p "bootcamp".caesar_cipher(2) #=> "dqqvecor"
+p "zebra".caesar_cipher(4)    #=> "difve"
